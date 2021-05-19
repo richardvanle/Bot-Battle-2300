@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class botController : MonoBehaviour
+public class BotController : MonoBehaviour
 {
     public Animator botAnimator;
     
