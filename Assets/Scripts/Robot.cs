@@ -11,6 +11,7 @@ public class Robot : MonoBehaviour
     {
         currentHealth = maxHealth;
     }
+
     private void OnCollisionEnter(Collision other)
     {
         Laser laser = other.gameObject.GetComponent<Laser>();
@@ -24,6 +25,7 @@ public class Robot : MonoBehaviour
             Die();
         }
     }
+
     private void Die()
     {
         Debug.Log("Robot dies");

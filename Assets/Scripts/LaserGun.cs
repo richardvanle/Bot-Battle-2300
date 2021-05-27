@@ -11,13 +11,11 @@ public class LaserGun : MonoBehaviour
     public void OnSelectEntered()
     {
         Fire();
-        Debug.Log("Right trigger fired OnSelectEntered");
     }
     private void Fire()
     {
         Laser laser = Instantiate(laserPrefab, firePoint.position, Quaternion.LookRotation(firePoint.forward));
         Rigidbody laserRigidbody = laser.GetComponent<Rigidbody>();
         laserRigidbody.AddForce(firePoint.forward * velocity, ForceMode.Impulse);
-        Debug.Log("Right trigger fired Fire");
     }
 }

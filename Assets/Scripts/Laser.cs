@@ -20,15 +20,15 @@ public class Laser : MonoBehaviour
 
     public void OnCollisionEnter(Collision other)
     {
-        // Play hit animation
-        // Create animation with parameter "laserHit" a for Laser Prefab (idle and explosion/particle)
+        Debug.Log("LASER HIT SOMETHING!");
+        //Create animation with parameter "laserHit" a for Laser Prefab (idle and explosion/particle)
         animator.SetTrigger("laserHit");
-        // Disable collider
+        //Disable collider
         laserRigidBody.detectCollisions = false;
         laserRigidBody.velocity = Vector3.zero;
         laserRigidBody.angularVelocity = Vector3.zero;
         enabled = false;
-    }
+    } 
 
     public void OnExplodeAnimationFinished()
     {
