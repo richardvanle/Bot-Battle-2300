@@ -16,6 +16,7 @@ public class LaserGun : MonoBehaviour
     {
         Laser laser = Instantiate(laserPrefab, firePoint.position, Quaternion.LookRotation(firePoint.forward));
         Rigidbody laserRigidbody = laser.GetComponent<Rigidbody>();
-        laserRigidbody.AddForce(firePoint.forward * velocity, ForceMode.Impulse);
+        //laserRigidbody.AddForce(firePoint.forward * velocity, ForceMode.Force);
+        laserRigidbody.velocity = firePoint.forward * velocity;
     }
 }

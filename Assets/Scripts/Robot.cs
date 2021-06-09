@@ -6,6 +6,7 @@ public class Robot : MonoBehaviour
 {
     public int maxHealth;
     public int currentHealth;
+    public Animator animator;
 
     private void Start()
     {
@@ -20,7 +21,7 @@ public class Robot : MonoBehaviour
             return;
         }
         currentHealth -= laser.damage;
-        if (currentHealth < 0)
+        if (currentHealth <= 0)
         {
             Die();
         }
@@ -28,6 +29,7 @@ public class Robot : MonoBehaviour
 
     private void Die()
     {
+        animator.SetBool("isDead", true);
         Debug.Log("Robot dies");
     }
 }

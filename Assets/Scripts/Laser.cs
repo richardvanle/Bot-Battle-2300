@@ -9,6 +9,14 @@ public class Laser : MonoBehaviour
     public Animator animator;
     public Rigidbody laserRigidBody;
 
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+
+    }
+
     public void Update()
     {
         duration -= Time.deltaTime;
@@ -20,10 +28,10 @@ public class Laser : MonoBehaviour
 
     public void OnCollisionEnter(Collision other)
     {
-        Debug.Log("LASER HIT SOMETHING!");
-        //Create animation with parameter "laserHit" a for Laser Prefab (idle and explosion/particle)
-        animator.SetTrigger("laserHit");
-        //Disable collider
+
+        Debug.Log("Laser hit " + other.gameObject.name);
+        animator.SetBool("laserHit", true);
+    
         laserRigidBody.detectCollisions = false;
         laserRigidBody.velocity = Vector3.zero;
         laserRigidBody.angularVelocity = Vector3.zero;
