@@ -9,7 +9,5 @@ public class LookAtRobotGun : MonoBehaviour
     void Update()
     {
         transform.LookAt(gunTarget);
-
     }
-
 }
