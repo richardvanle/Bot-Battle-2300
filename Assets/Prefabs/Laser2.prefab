@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 569730d95df9eee47a3e4c7c5ed9cb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 50
+  duration: 4
   damage: 5
   animator: {fileID: 2143340185455790984}
   laserRigidBody: {fileID: 2175288508506608696}
