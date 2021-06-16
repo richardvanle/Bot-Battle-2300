@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Robot : MonoBehaviour
 {
@@ -16,9 +17,15 @@ public class Robot : MonoBehaviour
     public List<Transform> laserSpawnPoints;
     public Laser laserPrefab;
     public Animator animator;
+    [SerializeField] private TextMeshProUGUI robotHealthText;
+    private bool isDead;
 
     public void FireLaser()
     {
+        if (isDead)
+        {
+            return;
+        }
         Debug.Log("FireLaser");
         Transform selectedSpawnPoint = laserSpawnPoints[currentSpawnIndex];
         Vector3 direction = (robotTarget.position - selectedSpawnPoint.position).normalized;
@@ -49,6 +56,7 @@ public class Robot : MonoBehaviour
     private void Update()
     {
         transform.LookAt(robotTarget);
+        robotHealthText.text = currentHealth.ToString();
     }
 
     private void OnCollisionEnter(Collision other)
@@ -61,12 +69,14 @@ public class Robot : MonoBehaviour
         currentHealth -= laser.damage;
         if (currentHealth <= 0)
         {
-            Die();
+            Die(); 
         }
     }
 
     private void Die()
     {
+        isDead = true;
+        enabled = false;
         animator.SetBool("isDead", true);
         Debug.Log("Robot dies");
     }
