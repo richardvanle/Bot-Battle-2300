@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,15 @@ public class Player : MonoBehaviour
 {
     public int playerMaxHealth;
     public int playerCurrentHealth;
+
     [SerializeField] private TextMeshProUGUI playerHealthText;
+
+    [SerializeField]
+    private Transform xrCameraTransform;
+    [SerializeField]
+    private CapsuleCollider bodyCollider;
+
+
     private bool isPlayerDead;
 
 
@@ -17,10 +26,10 @@ public class Player : MonoBehaviour
         SetPlayerHealth(playerMaxHealth);
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    private void OnCollisionEnter(Collision other)
     {
-        Debug.Log("OnControllerColliderHit " + hit.gameObject.name);
-        Laser laser = hit.collider.GetComponent<Laser>();
+        Debug.Log("OnControllerColliderHit " + other.gameObject.name);
+        Laser laser = other.collider.GetComponent<Laser>();
         if (laser == null)
         {
             return;
@@ -40,7 +49,7 @@ public class Player : MonoBehaviour
         enabled = false;
         Debug.Log("Player is dead");
     }
-    
+
     private void SetPlayerHealth(int newHealth)
     {
         playerCurrentHealth = newHealth;
@@ -50,6 +59,12 @@ public class Player : MonoBehaviour
         // Put audio cues here for laser
     }
 
+    private void LateUpdate()
+    {
+        var center = bodyCollider.transform.InverseTransformPoint(xrCameraTransform.position);
+        center.y = bodyCollider.bounds.center.y;
+        bodyCollider.center = center;
+    }
 }
 
 

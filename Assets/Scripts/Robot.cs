@@ -51,13 +51,14 @@ public class Robot : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
+        robotHealthText.text = currentHealth.ToString();
         StartCoroutine(nameof(LaserCooldown));
     }
 
     private void Update()
     {
         transform.LookAt(robotTarget);
-        
+
     }
 
     private void OnCollisionEnter(Collision other)
@@ -71,7 +72,7 @@ public class Robot : MonoBehaviour
         robotHealthText.text = currentHealth.ToString();
         if (currentHealth <= 0)
         {
-            Die(); 
+            Die();
         }
     }
 

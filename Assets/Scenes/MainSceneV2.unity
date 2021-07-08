@@ -1589,7 +1589,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1794
+  m_Name: pb_Mesh-1922
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3723,3 +3723,19 @@ MonoBehaviour:
   playerMaxHealth: 100
   playerCurrentHealth: 100
   playerHealthText: {fileID: 1416716929}
+  xrCameraTransform: {fileID: 2095525199}
+  bodyCollider: {fileID: 4105962913994461267}
+--- !u!136 &4105962913994461267
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4105962913994461265}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.2
+  m_Height: 1.7
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.8, z: 0}
