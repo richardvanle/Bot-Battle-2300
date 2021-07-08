@@ -28,7 +28,8 @@ public class Robot : MonoBehaviour
         }
         Debug.Log("FireLaser");
         Transform selectedSpawnPoint = laserSpawnPoints[currentSpawnIndex];
-        Vector3 direction = (robotTarget.position - selectedSpawnPoint.position).normalized;
+        Vector3 targetPosition = robotTarget.position + Vector3.down;
+        Vector3 direction = (targetPosition - selectedSpawnPoint.position).normalized;
 
         Laser laser = Instantiate(laserPrefab, selectedSpawnPoint.position, Quaternion.LookRotation(direction));
         Rigidbody laserRigidbody = laser.GetComponent<Rigidbody>();
@@ -56,7 +57,7 @@ public class Robot : MonoBehaviour
     private void Update()
     {
         transform.LookAt(robotTarget);
-        robotHealthText.text = currentHealth.ToString();
+        
     }
 
     private void OnCollisionEnter(Collision other)
@@ -67,6 +68,7 @@ public class Robot : MonoBehaviour
             return;
         }
         currentHealth -= laser.damage;
+        robotHealthText.text = currentHealth.ToString();
         if (currentHealth <= 0)
         {
             Die(); 

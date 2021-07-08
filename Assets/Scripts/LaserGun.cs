@@ -10,6 +10,7 @@ public class LaserGun : MonoBehaviour
 
     public void OnSelectEntered()
     {
+       // Check if you or robot are dead. If not, then fire
         Fire();
     }
     private void Fire()
